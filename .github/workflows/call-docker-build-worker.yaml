@@ -4,18 +4,18 @@ on:
   # we want pull requests so we can build(test) but not push to image registry
   push:
     branches:
-      - 'main'
+      - main
     # only build when important files change
     paths:
-      - 'worker/**'
-      - '.github/workflows/call-docker-build-worker.yaml'
+      - worker/**
+      - .github/workflows/call-docker-build-worker.yaml
   pull_request:
     branches:
       - 'main'
     # only build when important files change
     paths:
-      - 'worker/**'
-      - '.github/workflows/call-docker-build-worker.yaml'
+      - worker/**
+      - .github/workflows/call-docker-build-worker.yaml
   schedule:
     # re-run monthly to keep image fresh with upstream base images
     - cron: '0 12 15 * *'
