@@ -6,14 +6,14 @@ on:
     branches:
       - main
     paths:
-      - 'result/**'
-      - '.github/workflows/call-docker-build-result.yaml'
+      - result/**
+      - .github/workflows/call-docker-build-result.yaml
   pull_request:
     branches:
       - main
     paths:
-      - 'result/**'
-      - '.github/workflows/call-docker-build-result.yaml'
+      - result/**
+      - .github/workflows/call-docker-build-result.yaml
 
 jobs:
   build-image:
