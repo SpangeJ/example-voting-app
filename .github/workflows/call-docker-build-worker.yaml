@@ -5,7 +5,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - worker/**
+      - .github/workflows/call-docker-build-worker.yaml
   pull_request:
+    branches:
+      - main
+    paths:
+      - worker/**
+      - .github/workflows/call-docker-build-worker.yaml
 
 jobs:
   call-docker-build:
@@ -32,6 +40,7 @@ jobs:
           push: false
           load: true # Export to Docker Engine rather than pushing to a registry
           tags: ${{ github.run_id }}
+          target: test
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64
