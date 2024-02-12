@@ -5,15 +5,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - worker/**
-      - .github/workflows/call-docker-build-worker.yaml
   pull_request:
-    branches:
-      - main
-    paths:
-      - worker/**
-      - .github/workflows/call-docker-build-worker.yaml
 
 jobs:
   call-docker-build:
