@@ -32,4 +32,4 @@ WORKDIR /app
 
 COPY --from=build /app .
 
-ENTRYPOINT ["dotnet", "Worker.dll"]
+CMD ["dotnet", "Worker.dll"]
