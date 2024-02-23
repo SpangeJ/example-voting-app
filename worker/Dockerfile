@@ -4,6 +4,7 @@
 # https://hub.docker.com/_/microsoft-dotnet
 # hadolint ignore=DL3029
 FROM --platform=${BUILDPLATFORM} mcr.microsoft.com/dotnet/sdk:5.0 as build
+EXPOSE 80
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
