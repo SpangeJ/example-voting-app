@@ -4,7 +4,6 @@
 # https://hub.docker.com/_/microsoft-dotnet
 # hadolint ignore=DL3029
 FROM --platform=${BUILDPLATFORM} mcr.microsoft.com/dotnet/sdk:5.0 as build
-EXPOSE 80
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
@@ -28,13 +27,10 @@ RUN  case ${TARGETPLATFORM} in \
 
 # app image
 FROM mcr.microsoft.com/dotnet/runtime:5.0
+EXPOSE 80
 RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y libpng-dev libjpeg-dev curl libxi6 build-essential libgl1-mesa-glx
 WORKDIR /app
-
 COPY --from=build /app .
-
-RUN apt-get install -y curl
-
 CMD ["dotnet", "Worker.dll"]
