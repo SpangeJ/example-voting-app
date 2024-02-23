@@ -27,7 +27,9 @@ RUN  case ${TARGETPLATFORM} in \
 
 # app image
 FROM mcr.microsoft.com/dotnet/runtime:5.0
-
+RUN apt-get update
+RUN apt-get install -y curl
+RUN apt-get install -y libpng-dev libjpeg-dev curl libxi6 build-essential libgl1-mesa-glx
 WORKDIR /app
 
 COPY --from=build /app .
