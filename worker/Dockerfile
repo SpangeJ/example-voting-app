@@ -8,6 +8,7 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
+RUN apk --no-cache add curl
 WORKDIR /source
 COPY *.csproj .
 RUN case ${TARGETPLATFORM} in \
