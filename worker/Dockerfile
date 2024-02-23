@@ -8,7 +8,6 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
-RUN apt-get install -y curl
 WORKDIR /source
 COPY *.csproj .
 RUN case ${TARGETPLATFORM} in \
@@ -32,5 +31,7 @@ FROM mcr.microsoft.com/dotnet/runtime:5.0
 WORKDIR /app
 
 COPY --from=build /app .
+
+RUN apt-get install -y curl
 
 CMD ["dotnet", "Worker.dll"]
