@@ -45,7 +45,7 @@ jobs:
 
   test-unit:
     name: Unit tests in Docker
-    needs: [build-test-image]
+    needs: [call-docker-build]
     runs-on: ubuntu-latest
 
     permissions:
@@ -65,7 +65,7 @@ jobs:
 
   test-integration:
     name: Integration tests in Compose
-    needs: [build-test-image]
+    needs: [call-docker-build]
     runs-on: ubuntu-latest
 
     permissions:
@@ -97,7 +97,7 @@ jobs:
 
   test-k3d:
     name: Test Deployment in Kubernetes
-    needs: [build-test-image]
+    needs: [call-docker-build]
     runs-on: ubuntu-latest
 
     permissions:
@@ -141,7 +141,7 @@ jobs:
 
   scan-image:
     name: Scan Image with Trivy
-    needs: [build-test-image]
+    needs: [call-docker-build]
     runs-on: ubuntu-latest
 
     permissions:
